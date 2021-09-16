@@ -17,5 +17,9 @@ public class DeckCards {
 			}
 		}
 	}
+	public void shuffle()
+	{
+		Collections.shuffle(cards);
+	}
 
 }

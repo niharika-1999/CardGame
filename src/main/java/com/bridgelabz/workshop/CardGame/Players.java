@@ -1,6 +1,7 @@
 package com.bridgelabz.workshop.CardGame;
 import java.util.*;
 
+//Player with 9 cards
 class player
 {
 	public player()
@@ -9,16 +10,25 @@ class player
 	}
 }
 
-public class Players {
+//Players method to initialize the number of players
+public class Players {           
 	public static int numPlayers;
 	public Players(int numPlayers)
 	{
 		DeckCards cards=new DeckCards();
 		ArrayList<player> players=new ArrayList<player>(numPlayers);
 	}
+	
+	public static void sequencePlayer()
+	{
+		ArrayList<Integer> sequence=new ArrayList<Integer>(numPlayers);
+		for(int i=0;i<numPlayers;i++)
+			sequence.add(i);
+		Collections.shuffle(sequence);
+	}
 
 
-
+    //Main method
 	public static void main(String args[])
 	{
 		int num;
@@ -32,6 +42,7 @@ public class Players {
 		}
 		sc.close();
 		Players add=new Players(num);
+		Players.sequencePlayer();
 	}
 }
 
