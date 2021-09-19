@@ -1,49 +1,77 @@
 package com.bridgelabz.workshop.CardGame;
 import java.util.*;
 
-//Player with 9 cards
+/**Player with 9 cards and class to store
+ * total players with cards
+ * 
+ *
+ */
 class player
 {
+	private ArrayList<CardGame> playerCards;
 	public player()
 	{
-		ArrayList<CardGame> player=new ArrayList<CardGame>(9);
+		playerCards=new ArrayList<CardGame>(9);
+	}
+	
+	public List<CardGame> getplayerCards()
+	{
+		return this.playerCards;
+	}
+	
+	public void setPlayerCards(CardGame card)
+	{
+		this.playerCards.add(card);
 	}
 }
 
 //Players method to initialize the number of players
 public class Players {           
-	public static int numPlayers;
+	public int numPlayers;
+	private static ArrayList<player> play;
+	private ArrayList<Integer> sequence;
+	private DeckCards deck;
+	
 	public Players(int numPlayers)
 	{
-		DeckCards cards=new DeckCards();
-		ArrayList<player> players=new ArrayList<player>(numPlayers);
+		this.numPlayers=numPlayers;
+		deck=new DeckCards();
+		play=new ArrayList<player>(numPlayers);
+		for(int i=0;i<numPlayers;i++)
+			play.add(new player());
 	}
-	
-	public static void sequencePlayer()
+
+	public void sequencePlayer()//Method to sequence the order of the players
 	{
-		ArrayList<Integer> sequence=new ArrayList<Integer>(numPlayers);
+		sequence=new ArrayList<Integer>(numPlayers);
 		for(int i=0;i<numPlayers;i++)
 			sequence.add(i);
 		Collections.shuffle(sequence);
 	}
-
-
-    //Main method
-	public static void main(String args[])
+	
+	public void distributeCard()//Method to distribute the cards to players after shuffling
 	{
-		int num;
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter the total number of players");
-		num=sc.nextInt();
-		if(num<2||num>4)
+		deck.shuffle();
+		ArrayList<CardGame> card=deck.getCards();
+		Random random = new Random();
+		for(int i=0;i<9;i++)
 		{
-			System.out.println("Enter the number of players more than 2 to max 4");
-			num=sc.nextInt();
+			for(int j=0;j<numPlayers;j++)
+			{
+				player seq=play.get(sequence.get(j));
+				int x=random.nextInt(card.size());
+				seq.setPlayerCards(card.get(x));
+				card.remove(x);
+			}
 		}
-		sc.close();
-		Players add=new Players(num);
-		Players.sequencePlayer();
 	}
 }
+	
 
+
+
+
+
+
+	
 

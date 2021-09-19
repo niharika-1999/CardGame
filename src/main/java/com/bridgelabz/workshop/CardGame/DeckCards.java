@@ -17,9 +17,15 @@ public class DeckCards {
 			}
 		}
 	}
+	
 	public void shuffle()
 	{
 		Collections.shuffle(cards);
+	}
+	
+	public ArrayList<CardGame> getCards()
+	{
+		return cards;
 	}
 
 }
