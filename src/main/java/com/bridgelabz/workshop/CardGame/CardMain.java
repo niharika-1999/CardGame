@@ -17,6 +17,7 @@ public class CardMain {
 			Players add=new Players(num);
 			add.sequencePlayer();
 			add.distributeCard();
+			add.verify();
 		}
 	}
 
