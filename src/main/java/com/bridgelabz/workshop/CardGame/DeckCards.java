@@ -13,17 +13,17 @@ public class DeckCards {
 		{
 			for(int j=0;j<4;j++)
 			{
-				cards.add(new CardGame(suits[i],ranks[j]));
+				this.cards.add(new CardGame(suits[i],ranks[j]));
 			}
 		}
 	}
 	
-	public void shuffle()
+	public void shuffle()//Method to shuffle the cards
 	{
 		Collections.shuffle(cards);
 	}
 	
-	public ArrayList<CardGame> getCards()
+	public ArrayList<CardGame> getCards()//Returns ArrayList of cards
 	{
 		return cards;
 	}

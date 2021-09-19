@@ -65,7 +65,39 @@ public class Players {
 			}
 		}
 	}
+	
+	public void verify()//Method to verify the different cards with player
+	{
+		for(player check :play)
+		{
+			List<CardGame> p = check.getplayerCards();
+			int spade=0,heart=0,diamond=0,club=0;
+			for(CardGame i:p)
+			{
+				String j = i.getSuit();
+				switch(j)
+				{
+				case "Spades":spade++;
+				break;
+				case "Diamonds":diamond++;
+				break;
+				case "Hearts":heart++;
+				break;
+				case "Clubs":club++;
+				break;
+				
+				}
+			}
+			System.out.println("check:"+play.indexOf(play));
+			System.out.println("Clubs:" +club);
+			System.out.println("Diamonds:" +diamond);
+			System.out.println("Hearts:" +heart);
+			System.out.println("Spades:" +spade);
+		}
+	}
 }
+	
+
 	
 
 
